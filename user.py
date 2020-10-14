@@ -4,12 +4,13 @@ class User:
     """
     users = []
 
-    def __init__(self, user_name, password):
+    def __init__(self, user_name, password, credential):
         """
         Define username and password properties
         """
         self.user_name = user_name
         self.password = password
+        self.credential = credential
     
     def create_user(self):
         User.users.append(self)
