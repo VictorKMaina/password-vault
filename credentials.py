@@ -1,4 +1,4 @@
-class Credential:
+class Credentials:
     """
     Class for defining methods and properties of credentials
     """
