@@ -41,7 +41,7 @@ class TestUser(unittest.TestCase):
         Test case to check if another account has been created
         """
         self.new_user.create_user()
-        self.test_user = User("user", "pass")
+        self.test_user = User("user", "pass", credentials=[])
         self.test_user.create_user()
         self.assertEqual(len(User.users), 2)
 
@@ -124,7 +124,7 @@ class TestUser(unittest.TestCase):
         """
 
         self.new_user.create_user()
-        test_user = User("test", "pass")
+        test_user = User("test", "pass", credentials=[])
         test_user.create_user()
 
         search_user = User.validate_user("test", "pass")
@@ -138,7 +138,7 @@ class TestUser(unittest.TestCase):
         Test method to check if it lists all signed in users
         """
         self.new_user.create_user()
-        test_user = User("123", "123")
+        test_user = User("123", "123", credentials=[])
         test_user.create_user()
         user_names = User.list_users()
 
