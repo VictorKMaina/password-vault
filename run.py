@@ -24,7 +24,7 @@ def main():
     create_new_account("user", "user")
 
     while True:
-        print("\nWelcome to PassLocker.\n" + "\n1. Create New Account\n" + "2. Log In\n" + "3. Show existing users\n")
+        print("\nWelcome to PassLocker.\n" + "\n1. Create New Account\n" + "2. Log In\n" + "3. Show existing users\n" + "4. Exit PassLocker")
 
         print("\nChoose an option:")
         option = input()
@@ -75,6 +75,10 @@ def main():
             for username in User.list_users():
                 print(username)
         
+        elif option == "4":
+            print("Goodbye.")
+            break
+
         else:
             print("Please enter a valid option.")
 
