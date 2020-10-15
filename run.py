@@ -16,7 +16,7 @@ def login(user_name, password):
     """
     Function for login in user
     """
-    return User.find_user(user_name)
+    return User.validate_user(user_name, password)
 
 
 
@@ -24,7 +24,7 @@ def main():
     create_new_account("user", "user")
 
     while True:
-        print("\nWelcome to PassLocker.\n" + "\n1. Create New Account\n" + "2. Log In\n" + "3. Show existing users")
+        print("\nWelcome to PassLocker.\n" + "\n1. Create New Account\n" + "2. Log In\n" + "3. Show existing users\n")
 
         print("\nChoose an option:")
         option = input()
@@ -45,12 +45,15 @@ def main():
                 enter_user_name = input()
                 print("Enter your password:")
                 enter_password = input()
-                
-
-            while True: 
 
                 current_user = login(enter_user_name, enter_password)
-    
+
+                if current_user == False:
+                    print("\nInvalid username or password. Please try again.")
+                else:
+                    break
+
+            while True:     
                 print(f"\nWelcome, {current_user.user_name}.\n" + "\nMenu\n" + "-"*10 + "\n1. Add existing credentials \n" + "2. Create new credentials\n" + "3. View existing credentials\n" + "4. Logout")
                 print("\nPick an option:")
     

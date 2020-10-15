@@ -117,7 +117,7 @@ class TestUser(unittest.TestCase):
     #     self.new_user.find_credentials("Instagram")
 
     #     self.assertTrue()
-    def test_find_user(self):
+    def test_validate_user(self):
         """
         Test to check if user login info exists
         """
@@ -125,18 +125,19 @@ class TestUser(unittest.TestCase):
         self.new_user.create_user()
         test_user = User("test", "pass")
         test_user.create_user()
-        search_user = User.find_user("test", "pass")
 
-        # self.assertEqual(search_user, User.users[0])
+        search_user = User.validate_user("test", "pass")
+
         self.assertEqual(search_user, User.users[1])
-        self.assertFalse(search_user)
+        # self.assertEqual(search_user, User.users[1])
+        self.assertTrue(search_user)
 
     def test_list_users(self):
         """
         Test method to check if it lists all signed in users
         """
         self.new_user.create_user()
-        test_user = User("test", "pass")
+        test_user = User("123", "123")
         test_user.create_user()
         user_names = User.list_users()
 

@@ -49,15 +49,14 @@ class User:
         return self.credentials
 
     @classmethod
-    def find_user(cls, user_name, password=""):
+    def validate_user(cls, user_name, password):
         """
         Search Users list for user using username
         """
         for user in cls.users:
             if user.user_name == user_name and user.password == password:
                 return user
-            else:
-                return False
+        return False
 
     
     @classmethod
