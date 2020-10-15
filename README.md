@@ -38,9 +38,8 @@ To create a new account, enter `1`.
 
 All the navigation in the app is done in similar format, as directed by its instructions.
 
-## Known Bugs
-Currently, a user cannot delete an account once they've have added. This will be resolved in later development.
-
+## Known Issues
+Currently, a user cannot delete an account once they've have added. Another issue is that the app can create more than one user account with the same name. These will be resolved in later development.
 
 ## Support and contact details
 If you have any issues, questions, or ideas concerning the app, you can [email me](mailto:contact@victormaina.com).
