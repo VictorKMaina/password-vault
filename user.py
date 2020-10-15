@@ -52,10 +52,20 @@ class User:
     @classmethod
     def find_user(cls, user_name):
         """
-        Search Users list for user index
+        Search Users list for user using username
         """
         for user in cls.users:
             if user.user_name == user_name:
                 return user
             else:
                 pass
+    
+    @classmethod
+    def user_index(cls, search_user):
+        """
+        Method to search Users list usinf user and return index
+        """
+        for user in User.users:
+            if user == search_user:
+                return User.users.index(user)
+        return False

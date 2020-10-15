@@ -126,6 +126,21 @@ class TestUser(unittest.TestCase):
         
         # self.assertEqual(search_user, User.users[0])
         self.assertEqual(search_user, User.users[1])
+    
+    def test_return_user_index(self):
+        """
+        Test case to see if method returns index of searched-for user
+        """
+        current_user = None
+        self.new_user.create_user()
+        test_user = User("test", "pass")
+        test_user.create_user()
+
+        search_user = User.find_user("test")
+        current_user = User.user_index(search_user)
+
+        self.assertEqual(current_user, 1, "Not equal")
+
 
 if __name__ == "__main__":
     unittest.main()

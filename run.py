@@ -10,16 +10,15 @@ def create_new_account(user_name, password):
     new_account = User(user_name, password)
     new_account.create_user()
 
-def view_credentials(self):
+def login(user_name, password):
     """
-    Function for listing all credentials
+    Function for login in user
     """
+    return User.find_user(user_name)
 
 
 
 def main():
-    current_user = None
-
     while True:
         print("\nWelcome to PassLocker.\n" + "1. Create New Account\n" + "2. Log In\n" + "3. Show existing users")
 
@@ -43,9 +42,9 @@ def main():
             print("Enter your password:")
             enter_password = input()
 
-            current_user = 
+            current_user = login(enter_user_name, enter_password)
 
-            print(f"Welcome, {user_name}.\n" + "1. Add existing credentials \n" + "2. Create new credentials\n" + "3. View existing credentials")
+            print(f"Welcome, {current_user.user_name}.\n" + "1. Add existing credentials \n" + "2. Create new credentials\n" + "3. View existing credentials")
             print("\nPick an option:")
 
             option = input()
