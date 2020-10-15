@@ -102,5 +102,19 @@ class TestUser(unittest.TestCase):
 
         self.assertEqual(User.users[0].view_all_credentials(), User.users[0].credentials)
 
+    # def test_find_credentials(self):
+    #     """
+    #     Test to check if method finds correct login credentials
+    #     """
+    #     credentials_1 = Credentials("Instagram", "victormainak")
+    #     credentials_2 = Credentials("Twitter", "victorkmaina", "password")
+    #     self.new_user.add_new_credentials(credentials_1)
+    #     self.new_user.add_existing_credentials(credentials_2)
+        
+    #     self.new_user.find_credentials("Instagram")
+
+    #     self.assertTrue()
+            
+
 if __name__ == "__main__":
     unittest.main()
