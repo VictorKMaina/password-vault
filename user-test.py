@@ -114,7 +114,18 @@ class TestUser(unittest.TestCase):
     #     self.new_user.find_credentials("Instagram")
 
     #     self.assertTrue()
-            
+    def test_find_user(self):
+        """
+        Test to check if method returns the index of the user searched for
+        """
+
+        self.new_user.create_user()
+        test_user = User("test", "pass")
+        test_user.create_user()
+        search_user = User.find_user("test")
+        
+        # self.assertEqual(search_user, User.users[0])
+        self.assertEqual(search_user, User.users[1])
 
 if __name__ == "__main__":
     unittest.main()

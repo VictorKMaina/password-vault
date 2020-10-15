@@ -48,3 +48,14 @@ class User:
         Method to return a list of all credentials of a user
         """
         return self.credentials
+
+    @classmethod
+    def find_user(cls, user_name):
+        """
+        Search Users list for user index
+        """
+        for user in cls.users:
+            if user.user_name == user_name:
+                return user
+            else:
+                pass
