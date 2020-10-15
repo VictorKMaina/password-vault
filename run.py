@@ -50,7 +50,9 @@ def main():
             option = input()
 
         elif option == "3":
-            print("\nExisting Users\n" + "-"*20 + "\n" + str(User.find_user()))
+            print("\nExisting Users\n" + "-"*20 + "\n")
+            for username in User.list_users():
+                print(username)
         
         else:
             print("Please enter a valid option.")

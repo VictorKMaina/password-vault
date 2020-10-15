@@ -69,3 +69,15 @@ class User:
             if user == search_user:
                 return User.users.index(user)
         return False
+    
+    @classmethod
+    def list_users(cls):
+        """
+        Method to list usernames of all available users
+        """
+
+        user_names = []
+        for user in User.users:
+            user_names.append(user.user_name)
+        
+        return user_names
