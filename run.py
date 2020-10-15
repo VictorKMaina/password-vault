@@ -24,6 +24,12 @@ def add_existing_credentials(user, credentials):
     """
     user.add_existing_credentials(credentials)
 
+def add_new_credentials(user, credentials):
+    """
+    Function for adding new credentials to user object and generating passwords
+    """
+    user.add_new_credentials(credentials)
+
 def list_credentials(user):
     """
     List all saved credentials in user object
@@ -71,7 +77,7 @@ def main():
             
                         if option == "1":
                             print("\n")
-                            print("Enter the name of the account eg. Instagram")
+                            print("Enter the name of the existing account eg. Instagram")
                             enter_account_name = input()
                             print("Enter the account's username")
                             enter_account_username = input()
@@ -85,8 +91,22 @@ def main():
                             print("\n" + f"{enter_account_name} saved successfully!")
         
                         elif option == "2":
-                            pass
+                            print("\n")
+                            print("Enter the name of the new account eg. Instagram")
+                            enter_account_name = input()
+                            print("Create a user name")
+                            enter_account_username = input()
+                            print("Create a password (Press Enter to generate strong password)")
+                            enter_account_password = input()
+
+                            credentials = Credentials(enter_account_name, enter_account_username, enter_account_password)
+
+                            add_new_credentials(current_user, credentials)
         
+                            print("\n" + f"{enter_account_name} saved successfully!")
+                            if enter_account_password == "":
+                                print("Password generated successfully")
+
                         elif option == "3":
                             print("\n")
                             print("Saved accounts and passwords\n" + "-"*25)
