@@ -5,7 +5,6 @@ class User:
     """
     Class to define methods and properties of users
     """
-    users = []
 
     def __init__(self, user_name, password, credentials=[]):
         """
@@ -50,25 +49,16 @@ class User:
         return self.credentials
 
     @classmethod
-    def find_user(cls, user_name):
+    def find_user(cls, user_name, password=""):
         """
         Search Users list for user using username
         """
         for user in cls.users:
-            if user.user_name == user_name:
+            if user.user_name == user_name and user.password == password:
                 return user
             else:
-                pass
-    
-    @classmethod
-    def user_index(cls, search_user):
-        """
-        Method to search Users list usinf user and return index
-        """
-        for user in User.users:
-            if user == search_user:
-                return User.users.index(user)
-        return False
+                return False
+
     
     @classmethod
     def list_users(cls):
@@ -81,3 +71,5 @@ class User:
             user_names.append(user.user_name)
         
         return user_names
+
+    users = []

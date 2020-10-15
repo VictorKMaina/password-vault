@@ -119,30 +119,17 @@ class TestUser(unittest.TestCase):
     #     self.assertTrue()
     def test_find_user(self):
         """
-        Test to check if method returns the index of the user searched for
+        Test to check if user login info exists
         """
 
         self.new_user.create_user()
         test_user = User("test", "pass")
         test_user.create_user()
-        search_user = User.find_user("test")
+        search_user = User.find_user("test", "pass")
 
         # self.assertEqual(search_user, User.users[0])
         self.assertEqual(search_user, User.users[1])
-
-    def test_return_user_index(self):
-        """
-        Test case to see if method returns index of searched-for user
-        """
-        current_user = None
-        self.new_user.create_user()
-        test_user = User("test", "pass")
-        test_user.create_user()
-
-        search_user = User.find_user("test")
-        current_user = User.user_index(search_user)
-
-        self.assertEqual(current_user, 1, "Not equal")
+        self.assertFalse(search_user)
 
     def test_list_users(self):
         """
@@ -155,6 +142,8 @@ class TestUser(unittest.TestCase):
 
         # self.assertEqual(search_user, User.users[0])
         self.assertEqual(user_names, [User.users[0].user_name, User.users[1].user_name])
+
+        
 
 
 if __name__ == "__main__":
