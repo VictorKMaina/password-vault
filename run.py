@@ -14,18 +14,26 @@ def main():
     print("\n")
     print("Choose an option:")
 
-    option = input()
+    while True:
+        option = input()
+    
+        if option == "1":
+            while True:
+                print("\n" + "Create a user name:")
+                user_name = input()
+        
+                print("\n" + "Create new password:")
+                password = input()
+        
+                create_new_account(user_name, password)
+                break
+            print("\n")
+            print(f"Welcome, {user_name}. Pick an option:\n" + "1. Add existing credentials \n" + "2. Create new credentials")
 
-    if option == "1":
-        print("\n" + "Create a user name:")
-        user_name = input()
-
-        print("\n" + "Create new password:")
-        password = input()
-
-        create_new_account(user_name, password)
-    else:
-        print("OK")
+        elif option == "2":
+            print("OK")
+        else:
+            print("Please enter a valid option.")
 
 
 if __name__ == "__main__":
