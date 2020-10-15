@@ -18,6 +18,19 @@ def login(user_name, password):
     """
     return User.validate_user(user_name, password)
 
+def add_existing_credentials(user, enter_account_name, enter_account_username, enter_account_password):
+    """
+    Function for adding existing credentials to user object
+    """
+    credentials = Credentials(enter_account_name, enter_account_username, enter_account_password)
+    user.add_existing_credentials(credentials)
+
+def list_credentials(user):
+    """
+    List all saved credentials in user object
+    """
+    return user.view_all_credentials()
+
 
 
 def main():
@@ -66,6 +79,25 @@ def main():
                     print("Enter the account's username")
                     enter_account_username = input()
                     print("Enter the account's password")
+                    enter_account_password = input()
+                    
+                    add_existing_credentials(current_user, enter_account_name, enter_account_username, enter_account_password)
+
+                    print("\n" + f"{enter_account_name} saved successfully!")
+
+                elif option == "3":
+                    print("\n")
+                    print("Saved accounts and passwords\n" + "-"*25)
+
+                    user_credentials = list_credentials(current_user)
+                    
+                    if user_credentials == []:
+                        print("No accounts have been saved.")
+                    else:
+                        for credential in user_credentials:
+                            print (credential.account_name + " " + "."*10 + " Username: " + credential.user_name + " | " + "Password: " + credential.password)
+
+
 
                 elif option == "4":
                     break
