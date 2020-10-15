@@ -6,7 +6,7 @@ class User:
     Class to define methods and properties of users
     """
 
-    def __init__(self, user_name, password, credentials=[]):
+    def __init__(self, user_name, password, credentials):
         """
         Define username and password properties
         """
@@ -42,11 +42,11 @@ class User:
 
         self.credentials.append(credentials)
 
-    def view_all_credentials(self):
+    def view_all_credentials(user):
         """
         Method to return a list of all credentials of a user
         """
-        return self.credentials
+        return user.credentials
 
     @classmethod
     def validate_user(cls, user_name, password):

@@ -9,7 +9,7 @@ def create_new_account(user_name, password):
     """
     Function for creating a new user
     """
-    new_account = User(user_name, password)
+    new_account = User(user_name, password, credentials=[])
     new_account.create_user()
 
 def login(user_name, password):
@@ -18,18 +18,17 @@ def login(user_name, password):
     """
     return User.validate_user(user_name, password)
 
-def add_existing_credentials(user, enter_account_name, enter_account_username, enter_account_password):
+def add_existing_credentials(user, credentials):
     """
     Function for adding existing credentials to user object
     """
-    credentials = Credentials(enter_account_name, enter_account_username, enter_account_password)
     user.add_existing_credentials(credentials)
 
 def list_credentials(user):
     """
     List all saved credentials in user object
     """
-    return user.view_all_credentials()
+    return User.view_all_credentials(user)
 
 
 
@@ -64,43 +63,45 @@ def main():
                 if current_user == False:
                     print("\nInvalid username or password. Please try again.")
                 else:
-                    break
+                    while True:     
+                        print(f"\nWelcome, {current_user.user_name}.\n" + "\nMenu\n" + "-"*10 + "\n1. Add existing credentials \n" + "2. Create new credentials\n" + "3. View existing credentials\n" + "4. Logout")
+                        print("\nPick an option:")
+            
+                        option = input()
+            
+                        if option == "1":
+                            print("\n")
+                            print("Enter the name of the account eg. Instagram")
+                            enter_account_name = input()
+                            print("Enter the account's username")
+                            enter_account_username = input()
+                            print("Enter the account's password")
+                            enter_account_password = input()
+                            
+                            credentials = Credentials(enter_account_name, enter_account_username, enter_account_password)
 
-            while True:     
-                print(f"\nWelcome, {current_user.user_name}.\n" + "\nMenu\n" + "-"*10 + "\n1. Add existing credentials \n" + "2. Create new credentials\n" + "3. View existing credentials\n" + "4. Logout")
-                print("\nPick an option:")
-    
-                option = input()
-    
-                if option == "1":
-                    print("\n")
-                    print("Enter the name of the account eg. Instagram")
-                    enter_account_name = input()
-                    print("Enter the account's username")
-                    enter_account_username = input()
-                    print("Enter the account's password")
-                    enter_account_password = input()
-                    
-                    add_existing_credentials(current_user, enter_account_name, enter_account_username, enter_account_password)
-
-                    print("\n" + f"{enter_account_name} saved successfully!")
-
-                elif option == "3":
-                    print("\n")
-                    print("Saved accounts and passwords\n" + "-"*25)
-
-                    user_credentials = list_credentials(current_user)
-                    
-                    if user_credentials == []:
-                        print("No accounts have been saved.")
-                    else:
-                        for credential in user_credentials:
-                            print (credential.account_name + " " + "."*10 + " Username: " + credential.user_name + " | " + "Password: " + credential.password)
-
-
-
-                elif option == "4":
-                    break
+                            add_existing_credentials(current_user, credentials)
+        
+                            print("\n" + f"{enter_account_name} saved successfully!")
+        
+                        elif option == "2":
+                            pass
+        
+                        elif option == "3":
+                            print("\n")
+                            print("Saved accounts and passwords\n" + "-"*25)
+                            
+                            if list_credentials(current_user) == []:
+                                print("No accounts have been saved.")
+                            else:
+                                for credential in list_credentials(current_user):
+                                    print (credential.account_name + " " + "."*10 + " Username: " +         credential.user_name + " | " + "Password: " + credential.password)
+        
+        
+        
+                        elif option == "4":
+                            break
+                break
 
         elif option == "3":
             print("\nExisting Users\n" + "-"*20 + "\n")
