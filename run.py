@@ -97,8 +97,6 @@ def main():
                                 for credential in list_credentials(current_user):
                                     print (credential.account_name + " " + "."*10 + " Username: " +         credential.user_name + " | " + "Password: " + credential.password)
         
-        
-        
                         elif option == "4":
                             break
                 break
